@@ -317,18 +317,18 @@ def create_transformed_brush(brush, canvas_w, canvas_h,
     M = update_transformation_matrix(M, M3)
     M = update_transformation_matrix(M, M4)
 
-    rect_points = [[41, 340], [41, 33], [164, 33], [164, 340], [41, 340]]
+    # rect_points = [[41, 340], [41, 33], [164, 33], [164, 340], [41, 340]]
     # plt.plot()
-    rect_img = np.zeros_like(brush)
-    for rect_point in rect_points:
-        i, j = rect_point
-        for k, _ in enumerate(rect_img[i][j]):
-            rect_img[i][j][k] = 255
-    np.save('brush_test.npy', brush)
-    plt.imshow(brush) 
-    # plt.plot(rect_img)
+    # rect_img = np.zeros_like(brush)
+    # for rect_point in rect_points:
+    #     i, j = rect_point
+    #     for k, _ in enumerate(rect_img[i][j]):
+    #         rect_img[i][j][k] = 255
+    # np.save('brush_test.npy', brush)
+    # plt.imshow(brush) 
+    # # plt.plot(rect_img)
     
-    plt.show()
+    # plt.show()
 
     brush = cv2.warpAffine(
         brush, M, (canvas_w, canvas_h),
@@ -345,20 +345,20 @@ def create_transformed_brush(brush, canvas_w, canvas_h,
     # assert len(nonzero_index[0]) == 4
     # rect_points_after = list([[nonzero_index[0][i], nonzero_index[1][i]] for i in range(nonzero_index[0])])
 
-    # add ones
-    ones = np.ones(shape=(len(rect_points), 1))
+    # # add ones
+    # ones = np.ones(shape=(len(rect_points), 1))
 
-    points_ones = np.hstack([rect_points, ones])
+    # points_ones = np.hstack([rect_points, ones])
 
-    # transform points
-    transformed_points = M.dot(points_ones.T).T
+    # # transform points
+    # transformed_points = M.dot(points_ones.T).T
 
 
-    plt.plot(transformed_points)
-    # plt.imshow(rect_img)
-    plt.imshow(brush)
-    plt.title(f'theta: {theta}')
-    plt.show()
+    # plt.plot(transformed_points)
+    # # plt.imshow(rect_img)
+    # plt.imshow(brush)
+    # plt.title(f'theta: {theta}')
+    # plt.show()
 
     return brush, brush_alpha
 
