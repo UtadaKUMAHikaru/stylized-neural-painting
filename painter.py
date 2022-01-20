@@ -121,7 +121,7 @@ class PainterBase():
     # 根据参数进行渲染的函数。
     def _render(self, v, save_jpgs=True, save_video=True):
         # 不知为何只取了其第1个维度第0个位置的数据。
-        ic(v)
+        ic(v) # (1, 9, 12)
         # 画的时候只需原样读出来，传进来就行
         v = v[0,:,:]
         if self.args.keep_aspect_ratio:

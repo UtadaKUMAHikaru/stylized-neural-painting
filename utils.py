@@ -287,7 +287,7 @@ def create_transformed_brush(brush, canvas_w, canvas_h,
     brush_alpha = (brush_alpha > 0).astype(np.float32)
     brush_alpha = (brush_alpha*255).astype(np.uint8)
 
-    ic(brush)
+    # ic(brush)
  
     # 注意这是brush的shape。
     colormap = np.zeros([brush.shape[0], brush.shape[1], 3], np.float32)
@@ -354,13 +354,15 @@ def create_transformed_brush(brush, canvas_w, canvas_h,
     # transformed_points = M.dot(points_ones.T).T
 
 
-    # plt.plot(transformed_points)
-    # # plt.imshow(rect_img)
-    # plt.imshow(brush)
-    # plt.title(f'theta: {theta}')
+    # plt.plot(transformed_points[:, 0], transformed_points[:, 1])
+    # # # plt.imshow(rect_img)
+    # # plt.imshow(brush)
+    # # plt.title(f'theta: {theta}')
     # plt.show()
 
     return brush, brush_alpha
+
+
 
 
 def build_scale_matrix(sx, sy):

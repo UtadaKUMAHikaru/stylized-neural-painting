@@ -6,7 +6,7 @@ from painter import *
 
 # settings
 parser = argparse.ArgumentParser(description='STYLIZED NEURAL PAINTING')
-parser.add_argument('--img_path', type=str, default='/Users/chendeen/同步空间/绘画作业/不是人画的-2/4.jpeg', metavar='str',
+parser.add_argument('--img_path', type=str, default='4.jpeg', metavar='str',
                     help='path to test image (default: ./test_images/apple.jpg)')
 parser.add_argument('--renderer', type=str, default='oilpaintbrush', metavar='str',
                     help='renderer: [watercolor, markerpen, oilpaintbrush, rectangle (default oilpaintbrush)')
@@ -102,7 +102,7 @@ def optimize_x(pt):
         CANVAS_tmp = pt._render(PARAMS, save_jpgs=True, save_video=False)
         CANVAS_tmp = utils.img2patches(CANVAS_tmp, pt.m_grid + 1, pt.net_G.out_size).to(device)
 
-    # 存的跟传给_render的参数是同一个
+    # 存的跟传给_render的参数是同一个，但是存出来的就是不同一个了，需要还原回来
     pt._save_stroke_params(PARAMS)
     # 最终画画的语句，pt的_render函数
     final_rendered_image = pt._render(PARAMS, save_jpgs=True, save_video=True)
